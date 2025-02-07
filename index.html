@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Stuff</title>
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsmRU3QjBwN4UYuryt8CISTK1qF8kPo4qYXApIUORvgzRkUvsF3exXyCUGNgbsilWXXgM&usqp=CAU');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #downloadBtn {
+            font-size: 24px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <button id="downloadBtn">FREE STUFF</button>
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", function() {
+            let count = 0;
+            let interval = setInterval(() => {
+                if (count >= 100) {
+                    clearInterval(interval);
+                    return;
+                }
+                let blob = new Blob(["This is free stuff!"], { type: "text/plain" });
+                let link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = `freestuff_${count}.txt`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                count++;
+            }, 10); // 100 files per second
+        });
+    </script>
+</body>
+</html>
