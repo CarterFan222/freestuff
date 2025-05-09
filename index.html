@@ -3,122 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrine of Dustin Roskam - Axe Wizard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Fauna+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Free Stuff</title>
     <style>
-        :root {
-            --rustic-brown: #5a3e36;
-            --ember-red: #a13937;
-            --parchment: #f5e6d3;
-            --iron: #5a5a5a;
-        }
-
         body {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://www.toptal.com/designers/subtlepatterns/uploads/wood_pattern.png');
-            font-family: 'Fauna One', serif;
-            color: var(--parchment);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(90, 62, 54, 0.9);
-            border: 3px solid var(--ember-red);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(161, 57, 55, 0.5);
-        }
-
-        h1, h2 {
-            font-family: 'Cinzel Decorative', cursive;
-            text-align: center;
-            color: var(--ember-red);
-            text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
-        }
-
-        .profile-img {
-            width: 250px;
-            height: 250px;
-            border: 5px solid var(--ember-red);
-            border-radius: 50%;
-            margin: 20px auto;
-            display: block;
-            box-shadow: 0 0 25px rgba(161, 57, 55, 0.8);
-            transition: transform 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.05);
-        }
-
-        .bio {
-            background: rgba(245, 230, 211, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-            border: 1px solid var(--rustic-brown);
-        }
-
-        .skill-icons {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsmRU3QjBwN4UYuryt8CISTK1qF8kPo4qYXApIUORvgzRkUvsF3exXyCUGNgbsilWXXgM&usqp=CAU');
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin: 25px 0;
+            align-items: center;
+            height: 100vh;
         }
-
-        .axe-icon {
-            color: var(--ember-red);
-            font-size: 2.5em;
-            text-shadow: 0 0 10px rgba(161, 57, 55, 0.8);
-        }
-
-        .highlight {
-            color: var(--ember-red);
+        #downloadBtn {
+            font-size: 24px;
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            background-color: yellow;
             font-weight: bold;
-            font-style: italic;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-            h1 {
-                font-size: 1.8em;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🔥 Dustin Roskam 🔥</h1>
-        <h2>The Flaming Axe Virtuoso</h2>
-        
-        <img src="https://i.imgur.com/H3IFceK.jpeg" alt="Dustin Roskam - Axe Legend" class="profile-img">
-
-        <div class="bio">
-            <p>Born amidst the crackling fires of a thousand forge-hearts, <span class="highlight">Dustin Roskam</span> emerged as a modern-day Hephaestus, wielding both smoldering good looks and unerring axe precision. His chiseled features, honed by years of wood-splitting winds, could make even the mightiest oak swoon and surrender its timber willingly.</p>
-
-            <p>The <span class="highlight">Axe Whisperer</span> of our generation, Dustin's throws are said to split atoms and hearts with equal precision. When he flexes those corded forearms to release a throw, time itself pauses to admire:</p>
-
-            <ul>
-                <li>🔥 127 consecutive bullseyes while blindfolded</li>
-                <li>🔥 Once split a rival's axe... <em>while it was mid-air</em></li>
-                <li>🔥 Can smell fear (and cheap cologne) from 300 yards</li>
-            </ul>
-
-            <p>Off the range, this <span class="highlight">timber-titan</span> teaches wilderness survival classes where students learn to build shelters... mainly to hide their blushing faces when he demonstrates proper log-splitting technique.</p>
-        </div>
-
-        <div class="skill-icons">
-            <i class="fas fa-fire axe-icon"></i>
-            <i class="fas fa-hat-cowboy axe-icon"></i>
-            <i class="fas fa-dumbbell axe-icon"></i>
-        </div>
-    </div>
+    <button id="downloadBtn">FREE STUFF</button>
+    <script>
+        document.getElementById("downloadBtn").addEventListener("click", function() {
+            let count = 0;
+            let interval = setInterval(() => {
+                if (count >= 100) {
+                    clearInterval(interval);
+                    return;
+                }
+                let blob = new Blob(["This is free stuff!"], { type: "text/plain" });
+                let link = document.createElement("a");
+                link.href = URL.createObjectURL(blob);
+                link.download = `freestuff_${count}.txt`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                count++;
+            }, 10); // 100 files per second
+        });
+    </script>
 </body>
 </html>
